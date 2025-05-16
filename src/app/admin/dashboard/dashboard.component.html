@@ -1,0 +1,105 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Admin Dashboard</h2>
+
+  <form (ngSubmit)="addProperty()" class="row g-3 mb-5">
+    <div class="col-md-6">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="title" name="title" required />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Location</mat-label>
+        <input matInput [(ngModel)]="location" name="location" required />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Price</mat-label>
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="price"
+          name="price"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="description"
+          name="description"
+          required
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <button mat-raised-button color="primary" type="submit">
+        Add Property
+      </button>
+    </div>
+  </form>
+
+  <table
+    *ngIf="properties.length"
+    mat-table
+    [dataSource]="properties"
+    class="mat-elevation-z8 w-100"
+  >
+    <!-- Title -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let p">{{ p.title }}</td>
+    </ng-container>
+
+    <!-- Location -->
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef>Location</th>
+      <td mat-cell *matCellDef="let p">{{ p.location }}</td>
+    </ng-container>
+
+    <!-- Price -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let p">₹{{ p.price }}</td>
+    </ng-container>
+
+    <!-- Description -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let p">{{ p.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let p">
+        <button mat-icon-button color="accent" (click)="openCommandPrompt(p)">
+          <mat-icon>terminal</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr
+      mat-header-row
+      *matHeaderRowDef="['title', 'location', 'price', 'description']"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="
+        let row;
+        columns: ['title', 'location', 'price', 'description']
+      "
+    ></tr>
+  </table>
+</div>

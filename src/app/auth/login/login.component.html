@@ -1,0 +1,103 @@
+<!-- <div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
+    <h2 class="text-2xl font-bold mb-6 text-center">Welcome Back</h2>
+
+    <form (ngSubmit)="login()" class="space-y-4">
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Email"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        required
+      />
+
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Password"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        required
+      >
+
+      <button
+        type="submit"
+        class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div> -->
+
+<div class="background col-12">
+  <div class="container">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <div class="shadow-lg rounded-lg form-full-background">
+          <div class="form-image">
+            <h2 class="pt-4 mb-4 fw-bold text-center text-white">
+              Hello & Welcome to
+            </h2>
+            <h2 class="mb-4 fw-bold text-center text-white">
+              AWS Distribution
+            </h2>
+          </div>
+          <div class="form-background text-center pb-4">
+            <form (ngSubmit)="login()">
+              <h2 class="pt-2 fw-bold accent text-center">Login</h2>
+
+              <!-- <mat-form-field appearance="outline">
+                <mat-label>Email ID</mat-label>
+                <input matInput placeholder="Placeholder" />
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field> -->
+
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                  type="email"
+                  [(ngModel)]="email"
+                  name="email"
+                  matInput
+                  [errorStateMatcher]="matcher"
+                  placeholder="Ex. pat@example.com"
+                />
+                <mat-icon matSuffix>person</mat-icon>
+                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                @if (emailFormControl.hasError('email') &&
+                !emailFormControl.hasError('required')) {
+                <mat-error>Please enter a valid email address</mat-error>
+                } @if (emailFormControl.hasError('required')) {
+                <mat-error>Email is <strong>required</strong></mat-error>
+                }
+              </mat-form-field>
+              <br />
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide() ? 'password' : 'text'"
+                [(ngModel)]="password" name="password">
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="clickEvent($event)"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide()"
+                >
+                  <mat-icon>{{
+                    hide() ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+              </mat-form-field>
+
+              <button class="login-button example-full-width" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+.background{
+  background-image: url("../../assets/bg2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.form-full-background{
+  margin-top: 10vh;
+  border: 2px solid #363881;
+
+}
+.form-image{
+  background-image: url("../../assets/bg2.jpg");
+  height: 30vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 75%;
+}
+.form-background{
+  background-color: #fff;
+  opacity: 75%;
+}
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 80%;
+}
+
+.login-button {
+  background: linear-gradient(to right, #3498db, #8e44ad); /* Blue to Purple gradient */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease; /* Smooth transition for hover effect */
+
+  &:hover {
+    background: linear-gradient(to left, #3498db, #8e44ad); /* Reversed gradient on hover */
+    transition: background 1.3s ease; /* Smooth transition for hover effect */
+  }
+}
